@@ -1,7 +1,6 @@
 import { generateYAxis } from '@/app/lib/utils';
 import { CalendarIcon } from '@heroicons/react/24/outline';
 import { lusitana } from '@/app/ui/fonts';
-import type { Revenue } from '@/app/lib/definitions';
 import { fetchRevenue } from '@/app/lib/data';
 
 // This component is representational only.
@@ -13,7 +12,7 @@ import { fetchRevenue } from '@/app/lib/data';
 export default async function RevenueChart() {
   // fetch revenue data in component
   const revenue = await fetchRevenue();
-  
+
   const chartHeight = 350;
 
   const { yAxisLabels, topLabel } = generateYAxis(revenue);
