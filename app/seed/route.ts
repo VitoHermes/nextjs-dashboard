@@ -5,8 +5,27 @@ import { invoices, customers, revenue, users } from '../lib/placeholder-data';
 // biome-ignore lint/style/noNonNullAssertion: <explanation>
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
 
+interface PostgresError {
+  code: string;
+  message: string;
+}
+
+async function createExtension() {
+  try {
+    await sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+  } catch (error) {
+    // 如果扩展已存在，忽略错误
+    if ((error as PostgresError).code === '23505') {
+      console.log('Extension uuid-ossp already exists');
+      return;
+    }
+    throw error;
+  }
+}
+
 async function seedUsers() {
-  await sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+  await createExtension();
+  
   await sql`
     CREATE TABLE IF NOT EXISTS users (
       id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
@@ -31,7 +50,7 @@ async function seedUsers() {
 }
 
 async function seedInvoices() {
-  await sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+  await createExtension();
 
   await sql`
     CREATE TABLE IF NOT EXISTS invoices (
@@ -57,7 +76,7 @@ async function seedInvoices() {
 }
 
 async function seedCustomers() {
-  await sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+  await createExtension();
 
   await sql`
     CREATE TABLE IF NOT EXISTS customers (
