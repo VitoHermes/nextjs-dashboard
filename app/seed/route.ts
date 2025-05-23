@@ -14,7 +14,6 @@ async function createExtension() {
   try {
     await sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
   } catch (error) {
-    // 如果扩展已存在，忽略错误
     if ((error as PostgresError).code === '23505') {
       console.log('Extension uuid-ossp already exists');
       return;
