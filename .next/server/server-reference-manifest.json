@@ -1,49 +1,28 @@
 {
   "node": {
-    "40d9493f5bb1510288875fe36785bf20973e8a8de2": {
+    "6037a8d6364056f38271efdfb873a185cb46c070bf": {
       "workers": {
-        "app/dashboard/invoices/page": {
-          "moduleId": "[project]/.next-internal/server/app/dashboard/invoices/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/lib/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+        "app/login/page": {
+          "moduleId": "[project]/.next-internal/server/app/login/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/lib/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false
         }
       },
       "layer": {
-        "app/dashboard/invoices/page": "rsc"
+        "app/login/page": "action-browser"
       }
     },
-    "60b100ff41cce56c67dc985627f6c592c419180b49": {
+    "005a6f4fdff02fbe690ca889c73aa5bf191823c137": {
       "workers": {
-        "app/dashboard/invoices/create/page": {
-          "moduleId": "[project]/.next-internal/server/app/dashboard/invoices/create/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/lib/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false
-        },
-        "app/dashboard/invoices/page": {
-          "moduleId": "[project]/.next-internal/server/app/dashboard/invoices/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/lib/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+        "app/dashboard/(overview)/page": {
+          "moduleId": "[project]/.next-internal/server/app/dashboard/(overview)/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/ui/dashboard/sidenav.tsx [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false
         }
       },
       "layer": {
-        "app/dashboard/invoices/create/page": "action-browser",
-        "app/dashboard/invoices/page": "rsc"
-      }
-    },
-    "70cc7549e5e1be84f3b70156f1b4bb1e8e3ff69662": {
-      "workers": {
-        "app/dashboard/invoices/[id]/edit/page": {
-          "moduleId": "[project]/.next-internal/server/app/dashboard/invoices/[id]/edit/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/lib/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false
-        },
-        "app/dashboard/invoices/page": {
-          "moduleId": "[project]/.next-internal/server/app/dashboard/invoices/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/lib/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false
-        }
-      },
-      "layer": {
-        "app/dashboard/invoices/[id]/edit/page": "action-browser",
-        "app/dashboard/invoices/page": "rsc"
+        "app/dashboard/(overview)/page": "rsc"
       }
     }
   },
   "edge": {},
-  "encryptionKey": "rXEZc1DAdvu+fb1l8nm6G6tqSZSV0+zWjbxHR+BYwyc="
+  "encryptionKey": "fJ3FLNcEPeH5xncuPqwF5tCMIV8ZqW45FEFZG5Bxxyc="
 }
