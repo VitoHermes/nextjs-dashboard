@@ -1,9 +1,9 @@
 'use client';
- 
+
 import { useEffect } from 'react';
- 
+
 // biome-ignore lint/suspicious/noShadowRestrictedNames: <explanation>
- export default function Error({
+export default function Error({
   error,
   reset,
 }: {
@@ -14,7 +14,7 @@ import { useEffect } from 'react';
     // Optionally log the error to an error reporting service
     console.error(error);
   }, [error]);
- 
+
   return (
     <main className="flex h-full flex-col items-center justify-center">
       <h2 className="text-center">Something went wrong!</h2>
