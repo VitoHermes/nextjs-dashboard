@@ -13,7 +13,7 @@ export const authConfig = {
       if (isOnDashboard) {
         if (isLoggedIn) return true;
         return false; // Redirect unauthenticated users to login page
-      // biome-ignore lint/style/noUselessElse: <explanation>
+        // biome-ignore lint/style/noUselessElse: <explanation>
       } else if (isLoggedIn) {
         return Response.redirect(new URL('/dashboard', nextUrl));
       }
@@ -32,7 +32,7 @@ export const authConfig = {
         session.user.email = token.email as string;
       }
       return session;
-    }
+    },
   },
   providers: [
     Credentials({
@@ -47,7 +47,7 @@ export const authConfig = {
         return {
           id: '1',
           email: parsedCredentials.data.email,
-          name: 'User'
+          name: 'User',
         };
       },
     }),
