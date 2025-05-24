@@ -1,10 +1,12 @@
+import bcryptjs from 'bcryptjs';
 // https://nextjs.org/learn/dashboard-app/adding-authentication
 import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
-import bcryptjs from 'bcryptjs';
 import postgres from 'postgres';
 import { z } from 'zod';
+
 import type { User } from '@/app/lib/definitions';
+
 import { authConfig } from './auth.config';
 
 // biome-ignore lint/style/noNonNullAssertion: <explanation>
