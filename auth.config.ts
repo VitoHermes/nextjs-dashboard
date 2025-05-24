@@ -1,12 +1,28 @@
 import type { NextAuthConfig } from 'next-auth';
+import Credentials from 'next-auth/providers/credentials';
+import { z } from 'zod';
 
 export const authConfig = {
   pages: {
     signIn: '/login',
   },
   providers: [
-    // added later in auth.ts since it requires bcrypt which is only compatible with Node.js
-    // while this file is also used in non-Node.js environments
+    Credentials({
+      async authorize(credentials) {
+        const parsedCredentials = z
+          .object({ email: z.string().email(), password: z.string().min(6) })
+          .safeParse(credentials);
+
+        if (!parsedCredentials.success) {
+          return null;
+        }
+        return {
+          id: '1',
+          email: parsedCredentials.data.email,
+          name: 'User'
+        };
+      },
+    }),
   ],
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
