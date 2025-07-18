@@ -1,6 +1,7 @@
-import '@/app/ui/global.css';
 import { inter } from '@/app/ui/fonts';
+import '@/app/ui/global.css';
 import type { Metadata } from 'next';
+import ClientPrivyProvider from './ClientPrivyProvider';
 
 export const metadata: Metadata = {
   title: {
@@ -15,7 +16,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   // root layout
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body className={`${inter.className} antialiased`}>
+        <ClientPrivyProvider>{children}</ClientPrivyProvider>
+      </body>
     </html>
   );
 }

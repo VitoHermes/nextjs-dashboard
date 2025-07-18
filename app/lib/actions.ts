@@ -5,27 +5,10 @@ import { redirect } from 'next/navigation';
 import postgres from 'postgres';
 import { z } from 'zod';
 
-import { signIn } from '@/auth';
-import { AuthError } from 'next-auth';
-
 // biome-ignore lint/style/noNonNullAssertion: <explanation>
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
 
-export async function authenticate(prevState: string | undefined, formData: FormData) {
-  try {
-    await signIn('credentials', formData);
-  } catch (error) {
-    if (error instanceof AuthError) {
-      switch (error.type) {
-        case 'CredentialsSignin':
-          return 'Invalid credentials.';
-        default:
-          return 'Something went wrong.';
-      }
-    }
-    throw error;
-  }
-}
+// 移除 NextAuth 相关的 authenticate 函数，现在只使用 Privy
 
 const FormSchema = z.object({
   id: z.string(),
@@ -120,6 +103,13 @@ export async function updateInvoice(id: string, prevState: State, formData: Form
 }
 
 export async function deleteInvoice(id: string) {
-  await sql`DELETE FROM invoices WHERE id = ${id}`;
-  revalidatePath('/dashboard/invoices');
+  try {
+    await sql`DELETE FROM invoices WHERE id = ${id}`;
+    revalidatePath('/dashboard/invoices');
+    return { message: 'Deleted Invoice.' };
+  } catch (error) {
+    return {
+      message: 'Database Error: Failed to Delete Invoice.',
+    };
+  }
 }
